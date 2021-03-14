@@ -2,17 +2,14 @@
   <div id="app">
     <sidebar id="sidebar" />
     <router-view id="router" :key="$route.path" />
-    <alerDialog />
   </div>
 </template>
 <script lang="ts">
-import { defineAsyncComponent, defineComponent } from "vue";
 import sidebar from "@/views/Sidebar.vue";
-const alertDialog = defineAsyncComponent(() =>
-  import("@/components/AlertDialog.vue")
-);
+import { defineComponent } from "vue";
+
 export default defineComponent({
-  components: { sidebar, alertDialog }
+  components: { sidebar }
 });
 </script>
 <style>
