@@ -47,8 +47,7 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   data: () => ({
-    isShow
-    : false,
+    isShow: false,
     message: "hello",
     user: {
       name: "BO",
