@@ -14,10 +14,44 @@
         </li>
         <li>
           <router-link to="/example03/students/74/homeworks/2">
-            路由传参1
+            路由传参2
           </router-link>
         </li>
       </ul>
+      <li>
+        Composition-API
+        <ul>
+          <li>
+            <router-link to="/example04-01">
+              interface & ref() & computed() & watch()
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example04-02">
+              reactive
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example04-03/students/45/homeworks/23">
+              students/45/homeworks/23
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example04-03/students/18/homeworks/18">
+              students/18/homeworks/18
+            </router-link>
+          </li>
+          <li><router-link to="/example04-04">Composition</router-link></li>
+        </ul>
+      </li>
+      <li>
+        directives
+        <ul>
+          <li>
+            <router-link to="/example05-01">template & if & v-bind</router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>

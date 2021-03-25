@@ -15,6 +15,7 @@
     <br />
     homeworksID: {{ $route.params.hid }}
     <hr />
+    {{ getTitle }}
   </div>
 </template>
 <script lang="ts">
@@ -46,6 +47,15 @@ export default defineComponent({
   methods: {
     init() {
       console.log("init()");
+    }
+  },
+  computed: {
+    getTitle(): string {
+      const c = this.homeworks.find(h => h.id == this.hid);
+      if (c) {
+        return c.title;
+      }
+      return "df";
     }
   }
 });
