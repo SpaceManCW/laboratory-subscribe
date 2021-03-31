@@ -37,8 +37,7 @@ const routes = [
     props: true,
     path: "/example05-01",
     component: () => import("@/views/example05/Example05-01.vue")
-  }
-  /*
+  },
   {
     props: true,
     path: "/example05-02",
@@ -49,12 +48,18 @@ const routes = [
     path: "/example05-03",
     component: () => import("@/views/example05/Example05-03.vue")
   },
+  /*
   {
     props: true,
     path: "/example05-04",
     component: () => import("@/views/example05/Example05-04.vue")
   }
   */
+  {
+    props: true,
+    path: "/example06-01",
+    component: () => import("@/views/example06/Example06-01.vue")
+  }
 ];
 
 const router = createRouter({
