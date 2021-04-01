@@ -59,6 +59,9 @@
           <li>
             <router-link to="/example06-01">Form Binding</router-link>
           </li>
+          <li>
+            <router-link to="/example06-02">Form Binding2</router-link>
+          </li>
         </ul>
       </li>
     </ul>
