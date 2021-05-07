@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Vue示例</h1>
+    <h1>Vue实践</h1>
     <ul>
-      <li><router-link to="/example01">welcome</router-link></li>
+      <li><router-link to="/example01">显示内容</router-link></li>
       <li>
         <router-link to="/example02">数据驱动&计算属性</router-link>
       </li>
@@ -23,7 +23,7 @@
         <ul>
           <li>
             <router-link to="/example04-01">
-              interface & ref() & computed() & watch()
+              interface & ref()
             </router-link>
           </li>
           <li>
@@ -65,5 +65,9 @@
         </ul>
       </li>
     </ul>
+  </div>
+  <div>
+    <h1>Vue实验一</h1>
+    <li><router-link to="/homework01">显示内容</router-link></li>
   </div>
 </template>

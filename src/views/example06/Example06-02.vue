@@ -4,35 +4,35 @@
       与视图元素的绑定需要声明元素，以及绑定函数，在视图元素通过：ref绑定函数
     </p>
     <p>同意条款才能选择操作；必须选择两项才能提交；等于两项时变为不可用状态</p>
-  </div>
-  <form>
-    <label>
-      <input type="checkbox" v-model="agreed" />
-      同意条款
-    </label>
-    <br />
-    <template v-for="(c, index) in courses" :key="index">
+
+    <form>
       <label>
-        <input
-          :ref="chRefs"
-          type="checkbox"
-          v-model="sCoursessRef"
-          :value="{ id: c.id }"
-          :disabled="!agreed"
-        />
-        {{ c.name }}
+        <input type="checkbox" v-model="agreed" />
+        同意条款
       </label>
       <br />
-    </template>
-    <br />
-    <button
-      type="button"
-      :disabled="!agreed || sCoursesRef.length < amount"
-    ></button>
-  </form>
-  <p>
-    {{ sCoursesRef }}
-  </p>
+      <template v-for="(c, index) in courses" :key="index">
+        <label>
+          <input
+            :ref="chRefs"
+            type="checkbox"
+            v-model="sCoursesRef"
+            :value="{ id: c.id }"
+            :disabled="!agreed"
+          />
+          {{ c.name }}
+        </label>
+        <br />
+      </template>
+      <br />
+      <button type="button" :disabled="!agreed || sCoursesRef.length < amount">
+        submit
+      </button>
+    </form>
+    <p>
+      {{ sCoursesRef }}
+    </p>
+  </div>
 </template>
 <script lang="ts">
 import { listCourses } from "@/datasource/DataSource";

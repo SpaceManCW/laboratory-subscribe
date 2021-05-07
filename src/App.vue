@@ -19,11 +19,11 @@ export default defineComponent({
 }
 #sidebar {
   width: 300px;
-  border: 1px solid red;
+  border: 1px solid black;
   padding: 15px;
 }
 #router {
-  border: 1px solid red;
+  border: 1px solid black;
   flex: 1;
   padding: 15px;
 }

@@ -64,6 +64,11 @@ const routes = [
     props: true,
     path: "/example06-02",
     component: () => import("@/views/example06/Example06-02.vue")
+  },
+  {
+    prop: true,
+    path: "/homework01",
+    component: () => import("@/views/homework01/Homework01.vue")
   }
 ];
 
