@@ -1,87 +1,75 @@
 <template>
   <div>
-    <h1>composition</h1>
-    <p>
-      与Composition-API基本示例代码相同，但按逻辑聚合相关操作为独立的函数。
-    </p>
-    <h1>useMessage()函数</h1>
-    <p>
-      创建useMessage()函数，聚合message相关逻辑操作。包括计算属性/函数。
-      <br />
-      messageRef: {{ messageRef }}
-      <br />
-      <button type="button" @click="changeMessage">changeMessage</button>
-    </p>
+    <h3>对于msg的useMsg方法的使用</h3>
+    msg: {{ msgRef }}
+    <br />
+    <p>按钮触发useMsg中的changeMsg方法</p>
+    <br />
+    <button type="button" @click="changeMsg">点击改变msg</button>
+    <br />
+    <p>使用计算属性将msg翻转</p>
+    {{ computedMsg }}
     <hr />
-    <h1>useUser()函数</h1>
-    <p>
-      创建useUser()函数，聚合user对象数据相关逻辑操作。包括计算属性/函数。
-      <br />
-      基于Proxy代理对象能够感知新添加的属性
-      <br />
-      <button type="button" @click="changeAddress">changeAddress</button>
-      <br />
-      {{ userRef.name }} / {{ userRef.insertTime }} / {{ userRef.address }}
-      <br />
-      计算属性返回函数：{{ formatDateFunc(userRef.insertTime) }}
-    </p>
+    <h3>对于user的useUser方法的使用</h3>
+    user: {{ userRef }}
+    <br />
+    <p>按钮触发useUser中的changeUser改变user对象</p>
+    <button type="button" @click="changeUser">点击改变user</button>
+    <br />
+    <p>使用计算属性改变插入时间的格式</p>
+    {{ computedUser(userRef.insertTime) }}
     <hr />
   </div>
 </template>
 <script lang="ts">
+import { defineComponent, computed, ref, Ref } from "vue";
 import { User } from "@/datasource/Types";
-import { computed, defineComponent, Ref, ref } from "vue";
-//聚合所有与message相关的业务逻辑
-//传入Ref响应对象
-function useMessage(msg: Ref<string>) {
-  const reversMesage = computed(() =>
+function useMsg(msg: Ref<string>) {
+  const changeMsg = () => {
+    msg.value = "hello";
+  };
+  const computedMsg = computed(() =>
     msg.value
       .split("")
       .reverse()
       .join("")
   );
-  const changeMessage = () => {
-    msg.value = "composition-api";
-  };
   return {
-    reversMesage,
-    changeMessage
+    computedMsg,
+    changeMsg
   };
 }
-// 聚合所有与user相关的业务逻辑
 function useUser(user: Ref<User>) {
-  const formatDateFunc = computed(() => (data: string) =>
-    data.replace("T", " ")
-  );
-  const changeAddress = () => {
-    user.value.address = (Math.random() * 1000).toFixed(0).toString();
+  const userT: User = {
+    name: "Lv",
+    insertTime: "2021T5-13"
   };
+  const changeUser = () => {
+    user.value = userT;
+  };
+  const computedUser = computed(() => (data: string) => data.replace("T", "-"));
   return {
-    formatDateFunc,
-    changeAddress
+    changeUser,
+    computedUser
   };
 }
 export default defineComponent({
   setup() {
-    // 初始化组件数据
     const user: User = {
-      name: "BO",
-      insertTime: "2046-04-09T11:04:25"
+      name: "Lin",
+      insertTime: "2021T5-13"
     };
-    // 创建对应的响应式对象
-    const messageRef = ref("hello world");
+    const msgRef = ref("hello world");
     const userRef = ref(user);
-    // 调用独立函数
-    const { reversMesage, changeMessage } = useMessage(messageRef);
-    const { formatDateFunc, changeAddress } = useUser(userRef);
-    // 返给视图
+    const { computedMsg, changeMsg } = useMsg(msgRef);
+    const { changeUser, computedUser } = useUser(userRef);
     return {
-      messageRef,
-      reversMesage,
-      changeMessage,
+      msgRef,
       userRef,
-      formatDateFunc,
-      changeAddress
+      computedMsg,
+      changeMsg,
+      changeUser,
+      computedUser
     };
   }
 });

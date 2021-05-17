@@ -1,62 +1,22 @@
 <template>
   <div>
-    <p>
-      <b>一定在router配置声明启用props支持，否则无法获取数据。</b>
-      <br />
-      在vue props属性中声明同名变量
-    </p>
-    studentID: {{ sid }}
-    <br />
-    homeworksID: {{ hid }}
-    <br />
-    也可通过$route.params调用
-    <br />
-    studentID: {{ $route.params.sid }}
-    <br />
-    homeworksID: {{ $route.params.hid }}
+    <h2>路由传参的两种方法</h2>
+    <b>
+      第一种方法，在路由里把props打开，然后在组件里使用props[],之后可直接使用
+    </b>
     <hr />
-    {{ getTitle }}
+    通过第一种方法传递的sid：{{ sid }}
+    <hr />
+    <b>
+      第二种方法，不用在路由里打开props,直接在组件中通过$route.params.的方法使用
+    </b>
+    <hr />
+    通过第二种方法传递的hid: {{ $route.params.hid }}
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  props: ["sid", "hid"],
-  data: () => ({
-    homeworks: [
-      { id: 1, title: "spring" },
-      { id: 2, title: "springMVC" },
-      { id: 3, title: "JPA" }
-    ]
-  }),
-  created() {
-    //组件首次创建时调用
-    //基于参数异步请求数据再渲染
-    console.log(this.$route.params.sid);
-    console.log(this.$route.params.hid);
-    this.init();
-  },
-  beforeUpdate() {
-    //组件数据变化时，例如props改变时调用
-    this.init();
-  },
-  beforeRouteUpdate(to, from, next) {
-    //复用组件渲染后，路由更新前（首次进入不会回调）回调。可替代beforeUpdate()
-    this.init();
-  },
-  methods: {
-    init() {
-      console.log("init()");
-    }
-  },
-  computed: {
-    getTitle(): string {
-      const c = this.homeworks.find(h => h.id == this.hid);
-      if (c) {
-        return c.title;
-      }
-      return "df";
-    }
-  }
+  props: ["sid", "hid"]
 });
 </script>

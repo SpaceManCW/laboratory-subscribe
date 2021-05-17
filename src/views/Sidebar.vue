@@ -64,10 +64,117 @@
           </li>
         </ul>
       </li>
+      <li>
+        Vuex
+        <ul>
+          <li>
+            <router-link to="/example07-01">
+              state
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-02">
+              Mutations
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-03">
+              actions
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-04">
+              mapState & Getters
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Passing Data to child component
+        <ul>
+          <li>
+            <router-link to="/example08-01">
+              Example
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example08-02">
+              Example - 2
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        axios
+        <ul>
+          <li>
+            <router-link to="/example09-01">
+              github
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        mock
+        <ul>
+          <li>
+            <router-link to="/example10-01">
+              axios-mock-adapter
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example10-02">
+              axios & mock & vuex
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Nested Routes
+        <ul>
+          <li>
+            <router-link to="/example11-01">
+              Nested Routes
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        setup route
+        <ul>
+          <li>
+            <router-link to="/example12/students/12/homeworks/1">
+              sid:12; hid:1
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example12/students/74/homeworks/2">
+              sid:74; hid:2
+            </router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
-  </div>
-  <div>
-    <h1>Vue实验一</h1>
-    <li><router-link to="/homework01">显示内容</router-link></li>
+    <h1>Homework</h1>
+    <ul>
+      <li>
+        <router-link to="/homework01">
+          Homework - 1
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/homework02">
+          Homework - 2
+        </router-link>
+      </li>
+    </ul>
+    <h1>Integrating with backend</h1>
+    <ul>
+      <li>
+        <router-link to="/example13">
+          Integrating with backend
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>

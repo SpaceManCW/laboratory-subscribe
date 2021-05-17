@@ -1,47 +1,44 @@
 <template>
   <div>
-    <h1>v-if</h1>
-    <p v-if="user.level >= 4">此内容仅level >=4 可见</p>
-    <p>vue3.0，input组件默认不会被复用了</p>
-    <button type="button" v-on:click="changeInput">切换</button>
-    <br />
-    <template v-if="userNameLogin">
-      <input placeholder="Enter your username" />
+    <h2>v-if与v-else</h2>
+    <template v-if="userLogin">
+      <input placeholder="请输入账号" />
       <br />
-      <input type="password" placeholder="Enter your password" />
+      <input type="password" placeholder="请输入密码" />
     </template>
     <template v-else>
-      <input placeholder="Enter your KEY" />
+      <input type="password" placeholder="请输入密码" />
     </template>
+    <br />
+    <button type="button" @click="changeUserLogin">点击切换状态</button>
     <hr />
-    <h1>v-show</h1>
-    <button type="button" v-on:click="changeClose">切换</button>
-    <!-- <button v-on:click="close = !close">切换</button> -->
-    <p v-show="close">此内容仅close为true可见</p>
+    <h2>v-show</h2>
+    <p v-show="close">
+      此语句在close=true时显示，点击下方按键转换状态
+    </p>
+    <button type="button" @click="changeClose">点击切换状态</button>
+    <br />
+    <p>可以不写方法，直接在click中使close=!close</p>
+    <button @click="close = !close">点击切换状态</button>
   </div>
 </template>
 <script lang="ts">
-import { User } from "@/datasource/Types";
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup() {
-    const message = ref("hello world");
-    const user = ref<User>({ name: "BO", level: 5 });
+    const userLogin = ref(true);
     const close = ref(true);
-    const userNameLogin = ref(true);
-    const changeInput = () => {
-      userNameLogin.value = !userNameLogin.value;
+    const changeUserLogin = () => {
+      userLogin.value = !userLogin.value;
     };
     const changeClose = () => {
       close.value = !close.value;
     };
     return {
-      message,
-      userNameLogin,
+      userLogin,
+      changeUserLogin,
       close,
-      user,
-      changeClose,
-      changeInput
+      changeClose
     };
   }
 });
