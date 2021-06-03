@@ -1,8 +1,23 @@
+export interface Lab {
+  id?: number;
+  machines?: number;
+  describe?: string;
+  address?: string;
+}
+
 export interface Course {
   id?: number;
   name?: string;
   createTime?: string;
 }
+export interface Teacher {
+  id?: number;
+  name?: string;
+  department?: string;
+  major?: string;
+  courses?: Course[];
+}
+
 export interface User {
   id?: number;
   level?: number;

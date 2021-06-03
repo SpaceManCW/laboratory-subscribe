@@ -1,6 +1,7 @@
 import axios from "@/axios";
-import { listCourses } from "@/datasource/DataSource";
-import { Course, User } from "@/datasource/Types";
+import { listCourses, listLabs, listTeachers } from "@/datasource/DataSource";
+//注意引入Lab
+import { Course, User, Lab, Teacher } from "@/datasource/Types";
 import { ResultVO } from "@/mock";
 import { getShop, listShops, Order, Shop } from "@/views/homework02/homework02";
 import { ActionTree, createStore, GetterTree, MutationTree } from "vuex";
@@ -17,6 +18,9 @@ export interface State {
   orders: Order[];
   // Integrating with backend
   isLogin: boolean;
+  //以下是课设需要
+  labs: Lab[];
+  teachers: Teacher[];
 }
 
 const myState: State = {
@@ -31,7 +35,9 @@ const myState: State = {
   shopList: [],
   shopCache: [],
   orders: [],
-  isLogin: false
+  isLogin: false,
+  labs: [],
+  teachers: []
 };
 const myMutations: MutationTree<State> = {
   [vxt.UPDATE_USER]: (state, data: User) => (state.user = data),
@@ -39,17 +45,31 @@ const myMutations: MutationTree<State> = {
   [vxt.LIST_USER_COURSES]: (state, data: Course[]) =>
     (state.userCourses = data),
   [vxt.UPDATE_EXCEPTION]: (state, data: string) => (state.exception = data),
-  [vxt.LIST_SHOPS]: (state, data: Shop[]) => (state.shopList = data)
+  [vxt.LIST_SHOPS]: (state, data: Shop[]) => (state.shopList = data),
+  //以下是课设需要
+  [vxt.LIST_LABS]: (state, data: Lab[]) => (state.labs = data),
+  [vxt.LIST_TEACHERS]: (state, data: Teacher[]) => (state.teachers = data)
 };
 
 const myActions: ActionTree<State, State> = {
   [vxt.UPDATE_USER]: ({ commit }, data: User) => {
     setTimeout(() => commit(vxt.UPDATE_USER, data), 2000);
   },
+  //将commit作为第一个参数传入，两秒之后执行commit
+  [vxt.LIST_LABS]: ({ commit }) => {
+    const labs = listLabs();
+    setTimeout(() => commit(vxt.LIST_LABS, labs), 1000);
+  },
+  [vxt.LIST_TEACHERS]: ({ commit }) => {
+    const teachers = listTeachers();
+    setTimeout(() => commit(vxt.LIST_TEACHERS, teachers), 1000);
+  },
+  //以上是课设需要
   [vxt.LIST_COURSES]: ({ commit }) => {
     const courses = listCourses();
     setTimeout(() => commit(vxt.LIST_COURSES, courses), 2000);
   },
+
   // 10-01
   [vxt.LIST_USER_COURSES]: async ({ commit }, userId: string) => {
     const resp = await axios.get<ResultVO>(`users/${userId}/courses`);

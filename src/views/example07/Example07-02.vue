@@ -1,32 +1,37 @@
 <template>
   <div>
-    <p>{{ user.name }} / {{ user.address }}</p>
-    <p>
-      <input type="text" v-model="myUser.name" />
-      <br />
-      <input type="text" v-model="myUser.address" />
-      <br />
-      <button type="button" @click="updateUser">update</button>
-    </p>
+    <h2>同步事件应用</h2>
+    {{ user.name }}/{{ user.address }}
+    <br />
+    <input type="text" v-model="myUser.name" />
+    <br />
+    <input type="text" v-model="myUser.address" />
+    <br />
+    <button type="button" @click="updateuser">同步更新数据</button>
+    <br />
+    <button type="button" @click="asyncUpdate">异步更新数据</button>
   </div>
 </template>
 <script lang="ts">
-import { User } from "@/datasource/Types";
+import { defineComponent, computed, ref } from "vue";
 import { State } from "@/store";
-import { computed, defineComponent, ref } from "vue";
 import { Store, useStore } from "vuex";
+import { User } from "@/datasource/Types";
 import { UPDATE_USER } from "@/store/VuexTypes";
 export default defineComponent({
   setup() {
     const store: Store<State> = useStore();
     const user = computed(() => store.state.user);
-    // 创建一个响应式对象用于双向绑定
+    //创建一个响应式对象用于双向绑定
     const myUser = ref<User>({});
-    // 执行updateUser()函数时，从双向绑定的响应式对象中获取值
-    // 而非直接传递myUser响应式对象
-    //store.commit激活指定的同步事件
-    const updateUser = () => {
+    const updateuser = () => {
       store.commit(UPDATE_USER, {
+        name: myUser.value.name,
+        address: myUser.value.address
+      } as User);
+    };
+    const asyncUpdate = () => {
+      store.dispatch(UPDATE_USER, {
         name: myUser.value.name,
         address: myUser.value.address
       } as User);
@@ -34,7 +39,8 @@ export default defineComponent({
     return {
       user,
       myUser,
-      updateUser
+      updateuser,
+      asyncUpdate
     };
   }
 });

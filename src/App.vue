@@ -14,17 +14,18 @@ export default defineComponent({
 </script>
 <style>
 #app {
-  margin-top: 10px;
   display: flex;
+  width: 100%;
 }
 #sidebar {
-  width: 300px;
-  border: 1px solid red;
-  padding: 15px;
+  width: 150px;
+  height: 885px;
+  border: 1px solid black;
 }
 #router {
-  border: 1px solid red;
+  width: 100%;
+  border: 1px solid black;
   flex: 1;
-  padding: 15px;
+  padding: 10px;
 }
 </style>

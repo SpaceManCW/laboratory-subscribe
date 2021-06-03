@@ -22,6 +22,7 @@
         </td>
         <td>{{ c.createTime }}</td>
         <td>
+          <!-- 点击编辑按钮，将c赋给双向绑定的courseEdit,并显示模态框 -->
           <button
             @click="
               courseEdit = c;
@@ -35,6 +36,9 @@
     </table>
 
     <p>{{ courseEditedName }}</p>
+    <!--点击编辑模态框可见，并将courseEdit传给子组件 -->
+    <!--点击阴影区域，active变为false，关闭模态框 -->
+    <!--点击保存更改按钮，触发emitSubmit事件，当emitSubmit事件触发，执行onEmitSubmit函数 -->
     <editbutton2
       v-if="active"
       :course="courseEdit"

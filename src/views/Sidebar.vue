@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Vue实践</h1>
-    <ul>
+    <!-- <ul>
       <li><router-link to="/example01">显示内容</router-link></li>
       <li>
         <router-link to="/example02">数据驱动&计算属性</router-link>
@@ -175,6 +174,118 @@
           Integrating with backend
         </router-link>
       </li>
-    </ul>
+    </ul> -->
+    <aside>
+      <div class="sidebar">
+        <h4><a class="first" href="#">首页</a></h4>
+      </div>
+      <hr />
+      <div class="sidebar">
+        <h4 @click="clickIt">管理员</h4>
+        <ul v-if="active">
+          <li>
+            <router-link to="/courses/manager">
+              实验室管理
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/teacherManager">
+              教师管理
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div class="sidebar">
+        <h4 @click="clickIt2">教师</h4>
+        <ul v-if="active2">
+          <li>
+            <router-link to="/addCourses">
+              添加课程
+            </router-link>
+          </li>
+          <li><a href="#">DDoS高防IP</a></li>
+          <li><a href="#">Web应用防火墙</a></li>
+          <li><a href="#">CA证书服务</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- <ul>
+      <li>
+        <router-link to="/courses/manager">
+          管理员端
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/courses">
+          主界面
+        </router-link>
+      </li>
+    </ul> -->
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+export default defineComponent({
+  setup() {
+    const active = ref(false);
+    const clickIt = () => {
+      active.value = !active.value;
+    };
+    const active2 = ref(false);
+    const clickIt2 = () => {
+      active2.value = !active2.value;
+    };
+    return { active, clickIt, active2, clickIt2 };
+  }
+});
+</script>
+<style scoped>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font: 1.2rem "隶书";
+}
+/* 左侧边栏容器宽度 */
+aside {
+  width: 150px;
+  background: #f1f1f1;
+}
+/* 导航标题 */
+.sidebar > h4 {
+  padding: 15px 20px;
+  background: rgb(74, 82, 72);
+  color: white;
+}
+/* 添加标题悬浮样式 */
+.sidebar > h4:hover {
+  cursor: pointer;
+  background: #000;
+}
+.sidebar ul {
+  list-style: none;
+}
+/* 二级菜单样式 */
+.sidebar li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+/* 二级菜单悬浮样式 */
+aside li a:hover {
+  font-weight: bold;
+  background-color: #555;
+  color: white;
+}
+.first {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>

@@ -1,40 +1,34 @@
 <template>
   <div>
+    <h2>从单一数据源获取数据有三种方法</h2>
+    <p>第一种：直接通过$store.state.的方法获取</p>
+    <p>第二种：定义一个变量const store然后通过store.的方式获取</p>
+    <!--const store: Store<State> = useStore()-->
+    <p>第三种：在计算属性中用...mapState()获取，然后直接使用</p>
     <p>
-      可在视图直接通过$store.state获取state中数据。
-      <br />
-      {{ $store.state.user.name }} / {{ $store.state.user.address }}
+      注意组件内声明的user必须通过计算属性绑定state.user,否则state.user更新，组件的user不会响应式的更新
     </p>
     <hr />
-    <p>
-      useStore()函数必须在setup()中使用。可以传递store对象给自定义use函数。
-      <br />
-      组件内声明的user变量必须通过计算属性绑定state user。否则state
-      user更新，组件user变量不会响应式更新。
-    </p>
-    <p>{{ userS.name }} / {{ userS.address }}</p>
-    <hr />
-    <p>
-      通过mapState，获取state指定属性名称的值。
-      <br />
-      {{ user.name }} / {{ user.address }}
-      <br />
-    </p>
+    第一种方法：{{ $store.state.user.name }}/{{ $store.state.user.address }}
+    <br />
+    第二种方法：{{ users.name }}/{{ users.address }}
+    <br />
+    {{ store.state.user }}
+    <br />
+    第三种方法：{{ user.name }}/{{ user.address }}
   </div>
 </template>
 <script lang="ts">
+import { defineComponent, computed } from "vue";
 import { State } from "@/store";
-import { computed, defineComponent } from "vue";
-import { mapState, Store, useStore } from "vuex";
-
+import { mapState, useStore, Store } from "vuex";
 export default defineComponent({
   setup() {
-    //通过useStore()函数获取store对象，进一步获取state对象
     const store: Store<State> = useStore();
-    //组件内声明的user通过计算属性绑定state数据，当state数据改变时，触发计算使视图响应式的改变
-    const userS = computed(() => store.state.user);
+    const users = computed(() => store.state.user);
     return {
-      userS
+      users,
+      store
     };
   },
   computed: {

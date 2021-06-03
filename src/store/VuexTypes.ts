@@ -17,3 +17,6 @@ export const GET_SHOP = "GET_SHOP";
 export const BACKEND_WELCOME = "BACKEND_WELCOME";
 export const BACKEND_LOGIN = "BACKEND_LOGIN";
 export const BACKEND_COURSES = "BACKEND_COURSES";
+//以下是 课设需要
+export const LIST_LABS = "LIST_LABS";
+export const LIST_TEACHERS = "LIST_TEACHERS";
