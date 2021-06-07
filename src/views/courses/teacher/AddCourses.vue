@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h2>添加课程</h2>
+    <h2>课程实验管理</h2>
   </div>
 </template>

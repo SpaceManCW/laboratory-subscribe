@@ -1,0 +1,695 @@
+@charset "UTF-8";
+
+body {
+	font-family: "微软雅黑";
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table td {
+	padding: 0;
+}
+
+#bodyDiv {
+	/* border: solid 1px #BBB; */
+	background-color: white;
+	border-radius: 10px;
+	padding: 0px 10px;
+	overflow: "auto";
+}
+
+.headline {
+	height: 5%;
+	line-height:200%;
+	width: 100%;
+	display: flex;
+	flex-direction:row;
+	justify-content:space-between;
+	
+}
+
+.caption{
+	font-size:1.6rem;
+	font-weight: bold;
+	color: #333;
+	margin-left:4px;
+}
+
+#meetingRoomNumber {
+	padding: 0px 4px 0px 4px;
+	font-size: 1.1rem;
+	font-family: "微软雅黑";
+}
+
+.registerMessageTitle {
+	font-size: 1.5rem;
+	font-family: "微软雅黑";
+}
+
+.bookingTitle {
+	font-size: 1.5rem;
+	font-family: "微软雅黑";
+}
+
+#tablecontent {
+	height: 100%;
+	width: 99%;
+	font-size: 0.9rem;
+	border: solid #BBB;
+	cellspacing: 0px;
+	cellpadding: 0px;
+	border-width: 1px 0px 0px 1px;
+}
+
+#tablecontent td {
+	border: solid #BBB;
+	border-width: 0px 1px 1px 0px;
+}
+
+#inputbox {
+	width: 99%;
+	height: 100%;
+	font-size: 0.9rem;
+	font-family: "微软雅黑";
+	border: solid 1px #BBB;
+}
+
+#videoHint {
+	display: none;
+	width: 100%;
+	text-align: center;
+	font-size: 1rem;
+	font-family: "微软雅黑";
+	color: red;
+}
+
+#buttonTable {
+	width: 100%;
+	height: 15%;
+}
+
+.date {
+	float: right;
+}
+
+.time {
+	float: left;
+}
+
+#header {
+	background-color: #EEE;
+	font-size: 1rem;
+	height: 55px;
+}
+
+#bodyCover {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: #EEE;
+	z-index: 0;
+	opacity: 0.1;
+}
+
+#loginbox {
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 350px;
+	height: 300px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: #EEE;
+	z-index: 1;
+	padding: 20px;
+}
+
+#inputBoxCover {
+	position: absolute;
+	width: 20%;
+	height: 85%;
+	background-color: #EEE;
+	z-index: 0;
+	opacity: 0;
+}
+
+#mail {
+	font-size: 0.9rem;
+	font-family: "微软雅黑";
+	width: 240px;
+	height: 28px;
+}
+
+#password {
+	font-size: 0.9rem;
+	font-family: "微软雅黑";
+	width: 240px;
+	height: 28px;
+}
+
+#loginLabel:hover {
+	cursor: pointer;
+}
+
+#logoutLabel:hover {
+	cursor: pointer;
+}
+
+.checkedBgColor {
+	background-color: #EEE;
+}
+
+.myDataBgColor {
+	background-color: #FFFFCC;
+}
+
+.otherDataBgColor {
+	background-color: #CCFFFF;
+}
+
+#lastWeek {
+	cursor: pointer;
+}
+
+#thisWeek {
+	cursor: pointer;
+}
+
+#nextWeek {
+	cursor: pointer;
+}
+
+#lastWeekBut {
+	cursor: pointer;
+}
+
+#nextWeekBut {
+	cursor: pointer;
+}
+
+.loginTitle {
+	font-size: 1.5rem;
+	font-family: "微软雅黑";
+	width: 350px;
+	text-align: center;
+}
+
+#allTable {
+	width: 100%;
+	height: 90%;
+}
+
+#registerTable {
+	width: 100%;
+	height: 12%;
+}
+
+#bookingTable{
+	width: 100%;
+	height: 12%;
+}
+
+#inputTable{
+	width: 100%;
+	font-size:0.9rem;
+}
+
+#inputTable tr{
+	height: 42px;
+}
+
+#labelTable{
+	width: 100%;
+	font-size:0.9rem;
+}
+
+#labelTable tr{
+	height: 42px;
+}
+
+#loginTable tr{
+	height: 60px;
+}
+
+#loginButton tr{
+	height: 100px;
+}
+
+#loginButton td{
+	width: 175px;
+	text-align: center;
+}
+
+#loginLabel{
+	margin-right:6px;
+	font-size: 1.5rem;
+	font-family: "微软雅黑";
+}
+
+.thisDayBgColor{
+	background-color: yellow;
+}
+
+#logoutHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#logoutHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#emptyHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#emptyHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#submitHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#submitHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#updateHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#updateHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#deleteHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 90px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#deleteHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#logDefeatedBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 400px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#logDefeatedBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#verificationHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 360px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#verificationHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#noDataHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 390px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#noDataHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#subjectHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#subjectHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#numberHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#numberHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#numberNoHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 340px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#numberNoHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#bookingSuccessBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 310px;
+	height: 80px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#bookingSuccessBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#updateSuccessBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 310px;
+	height: 80px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#updateSuccessBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#deleteSuccessBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 310px;
+	height: 80px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#deleteSuccessBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#noPageBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 300px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#noPageBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#serverErrorBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 310px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#serverErrorBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#dateHintBox {
+	background-color: white;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 370px;
+	height: 100px;
+	border: 1px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	padding: 20px;
+}
+
+#dateHintBox td{
+	font-size: 22px;
+	font-family: "微软雅黑";
+}
+
+#lastWeekBut{
+	width: 19px;
+	height: 19px;
+	background-color: white;
+	border: solid 1px white;
+	background-image: url(../img/last.png);
+}
+
+#nextWeekBut{
+	width: 19px;
+	height: 18px;
+	background-color: white;
+	border: solid 1px white;
+	background-image: url(../img/next.png);
+}
+
+p{
+	font-size: 0.8rem;
+	font-family: "微软雅黑";
+	color: red;
+}
+————————————————
+版权声明：本文为CSDN博主「sun_ting_chuan」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/sun_ting_chuan/article/details/83688191

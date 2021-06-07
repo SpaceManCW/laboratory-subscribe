@@ -208,6 +208,11 @@ const routes = [
   },
   {
     props: true,
+    path: "/labBespeak",
+    component: () => import("@/views/courses/teacher/LabBespeak.vue")
+  },
+  {
+    props: true,
     path: "/",
     component: () => import("@/views/courses/main.vue")
   }

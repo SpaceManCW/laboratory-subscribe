@@ -204,9 +204,11 @@
               添加课程
             </router-link>
           </li>
-          <li><a href="#">DDoS高防IP</a></li>
-          <li><a href="#">Web应用防火墙</a></li>
-          <li><a href="#">CA证书服务</a></li>
+          <li>
+            <router-link to="/labBespeak">
+              实验室预约
+            </router-link>
+          </li>
         </ul>
       </div>
     </aside>
