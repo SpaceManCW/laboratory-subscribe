@@ -74,7 +74,7 @@ body {
 }
 #box2 {
   position: relative;
-  left: 180px;
+  left: 220px;
   width: 600px;
   height: 370px;
   font: 1rem "隶书";

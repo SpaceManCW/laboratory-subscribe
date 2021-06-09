@@ -34,41 +34,28 @@
             <!-- 输入信息的表格 -->
             <table id="inputTable">
               <tr>
-                <td align="center" width="32%">&nbsp;开始时间：</td>
-                <td><select id="startTime" name="startTime"></select></td>
+                <td align="center" width="32%">预约教师：</td>
+                <td>
+                  <select class="time">
+                    <option v-for="(t, index) in teachers" :key="index">
+                      {{ t.name }}
+                    </option>
+                  </select>
+                </td>
               </tr>
               <tr>
-                <td align="center" width="32%">&nbsp;结束时间：</td>
-                <td><select id="endTime" name="endTime"></select></td>
-              </tr>
-              <tr>
-                <td align="center" width="32%">&nbsp;预&nbsp;约&nbsp;人：</td>
-                <td><label id="creator"></label></td>
-              </tr>
-              <tr>
-                <td align="center" width="32%">&nbsp;会议主题：</td>
+                <td align="center" width="32%">&nbsp;课程名称：</td>
                 <td>
                   <input
                     id="subject"
                     type="text"
                     name="subject"
-                    placeholder="会议主题"
+                    placeholder="请输入课程名称"
                   />
                 </td>
               </tr>
               <tr>
-                <td align="center" width="32%">&nbsp;部门名称：</td>
-                <td>
-                  <input
-                    id="department"
-                    type="text"
-                    name="department"
-                    placeholder="部门选填"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td align="center" width="32%">&nbsp;参会人数：</td>
+                <td align="center" width="32%">&nbsp;课程人数：</td>
                 <td>
                   <input
                     id="number"
@@ -76,51 +63,6 @@
                     name="number"
                     placeholder="请输入正整数"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td align="center" width="32%">&nbsp;设备选择：</td>
-                <td>
-                  <input
-                    id="facility1"
-                    type="checkbox"
-                    name="facility1"
-                    value="投影"
-                  />
-                  投影
-                  <input
-                    id="facility2"
-                    type="checkbox"
-                    name="facility2"
-                    value="电话"
-                  />
-                  电话
-                  <input
-                    id="facility3"
-                    type="checkbox"
-                    name="facility3"
-                    value="视频"
-                  />
-                  视频
-                </td>
-              </tr>
-              <tr>
-                <td align="center" width="32%">&nbsp;是否招待：</td>
-                <td>
-                  <input
-                    id="serviceYes"
-                    type="radio"
-                    name="service"
-                    value="true"
-                  />
-                  是
-                  <input
-                    id="serviceNo"
-                    type="radio"
-                    name="service"
-                    value="false"
-                  />
-                  否
                 </td>
               </tr>
               <tr>
@@ -132,6 +74,44 @@
                     name="remark"
                     placeholder="选填"
                   />
+                </td>
+              </tr>
+              <tr>
+                <td align="center" width="32%">&nbsp;预约周次：</td>
+                <td>
+                  <input id="week" type="number" min="1" max="19" step="1" />
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" width="32%">&nbsp;星&emsp;&emsp;期：</td>
+                <td>
+                  <select class="time">
+                    <option>日</option>
+                    <option>一</option>
+                    <option>二</option>
+                    <option>三</option>
+                    <option>四</option>
+                    <option>五</option>
+                    <option>六</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" width="32%">&nbsp;预约时间：</td>
+                <td>
+                  <select class="time">
+                    <optgroup label="上午">
+                      <option>1,2节</option>
+                      <option>3,4节</option>
+                    </optgroup>
+                    <optgroup label="下午">
+                      <option>5,6节</option>
+                      <option>7,8节</option>
+                      <option>9,10节</option>
+                    </optgroup>
+                  </select>
                 </td>
               </tr>
             </table>
@@ -147,16 +127,19 @@
 import { computed, defineComponent } from "vue";
 import { State } from "@/store";
 import { useStore, Store } from "vuex";
-import { LIST_LABS } from "@/store/VuexTypes";
+import { LIST_LABS, LIST_TEACHERS } from "@/store/VuexTypes";
 import sonItem from "./SonItem01.vue";
 export default defineComponent({
   components: { sonItem },
   setup() {
     useStore().dispatch(LIST_LABS);
+    useStore().dispatch(LIST_TEACHERS);
     const store: Store<State> = useStore();
     const labs = computed(() => store.state.labs);
+    const teachers = computed(() => store.state.teachers);
     return {
-      labs
+      labs,
+      teachers
     };
   }
 });
@@ -243,5 +226,13 @@ export default defineComponent({
 
 #labelTable tr {
   height: 42px;
+}
+#week {
+  width: 75px;
+  height: 15px;
+}
+.time {
+  width: 83px;
+  height: 20px;
 }
 </style>
