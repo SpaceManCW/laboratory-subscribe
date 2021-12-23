@@ -3,9 +3,10 @@ import axios from "axios";
 import store from "@/store";
 import { UPDATE_EXCEPTION } from "@/store/VuexTypes";
 
+//请求的拦截器
 axios.interceptors.request.use(
   req => {
-    const auth = sessionStorage.getItem("token");
+    const auth = sessionStorage.getItem("Authorization");
     // 判断,用于避免header包含authorization属性但数据值为空
     if (auth) {
       req.headers.token = auth;
@@ -17,6 +18,8 @@ axios.interceptors.request.use(
     return Promise.reject();
   }
 );
+
+//响应的拦截器
 axios.interceptors.response.use(
   resp => {
     // 从响应获取响应体对象

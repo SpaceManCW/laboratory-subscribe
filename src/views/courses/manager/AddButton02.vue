@@ -4,9 +4,6 @@
       <div class="modal-dialog" @click.stop>
         <div class="modal-header">
           <h3>添加教师</h3>
-          <p style="color:red">
-            输入教师信息，点击完成实现添加，点击结束关闭模态框
-          </p>
         </div>
         <div class="modal-content">
           <div>
@@ -44,7 +41,6 @@
         <div class="modal-content02">
           <div>
             <h3>添加课程</h3>
-            <p style="color:red">添加完成点击清除可继续添加多个课程</p>
             <div>
               已添加课程：
               <span class="courses" v-for="(c, index) of courses" :key="index">
@@ -67,12 +63,22 @@
               placeholder="请输入课程名称"
               v-model="coursesItme.name"
             />
-            <div>
-              <br />
-              <button @click="clear02">清除</button>
-              &emsp;
-              <button @click="addCourses">添加</button>
-            </div>
+          </div>
+          <br />
+          <div>
+            课程学时：
+            <input placeholder="请输入整数" v-model="coursesItme.classHour" />
+          </div>
+          <br />
+          <div>
+            学生数量：
+            <input placeholder="请输入整数" v-model="coursesItme.students" />
+          </div>
+          <div>
+            <br />
+            <button @click="clear02">清除</button>
+            &emsp;
+            <button @click="addCourses">添加</button>
           </div>
         </div>
 
@@ -117,10 +123,8 @@ export default defineComponent({
       courses.value.push({
         id: coursesItme.value.id,
         name: coursesItme.value.name,
-        createTime: new Date()
-          .toISOString()
-          .replace("T", " ")
-          .substring(0, 10)
+        classHour: coursesItme.value.classHour,
+        students: coursesItme.value.students
       });
     };
     const clear = () => {

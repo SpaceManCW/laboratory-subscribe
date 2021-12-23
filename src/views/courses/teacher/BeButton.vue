@@ -92,7 +92,7 @@ export default {
   methods: {
     /**
      * 数字转中文
-     * @param {Number} num 需要转换的数字
+     * @param  num 需要转换的数字
      * @param {String} identifier 标识符
      * @returns {String} 转换后的中文
      */

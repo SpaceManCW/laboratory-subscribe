@@ -1,5 +1,4 @@
 <template>
-  <!-- <router-view id="router" :key="$route.path" /> -->
   <div
     class="container"
     v-bind:style="{
@@ -11,13 +10,13 @@
     <p class="head">东北林业大学实验室预约系统</p>
 
     <!-- 登录界面 -->
-    <template v-if="userLogin">
+    <template v-if="active">
       <div class="big">
         <!-- 账号输入区域 -->
         <div class="num">
           <span class="char">账号</span>
           &nbsp;:&nbsp;
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="userForm.userName" />
         </div>
         <!-- 账号输入区域 -->
         <br />
@@ -25,18 +24,16 @@
         <div class="pass">
           <span class="char">密码</span>
           &nbsp;:&nbsp;
-          <input class="input" type="password" />
+          <input class="input" type="password" v-model="userForm.password" />
         </div>
         <!-- 密码输入区域 -->
         <br />
         <!-- 登陆按键 -->
-        <button class="btn">
-          <router-link to="/index">
-            登录
-          </router-link>
+        <button class="btn" @click="login" type="button">
+          登录
         </button>
         <br />
-        <button class="btn02" @click="changeUserLogin">新用户注册</button>
+        <button class="btn02" @click="changeActive">新用户注册</button>
       </div>
     </template>
     <!-- 登录界面 -->
@@ -80,17 +77,40 @@
   </div>
 </template>
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { UserForm } from "@/datasource/Types";
+import { State } from "@/store";
+import { LOGIN, SET_ROLE, SET_MENULIST } from "@/store/VuexTypes";
+import { ref, defineComponent, computed, Ref } from "vue";
+import { useRouter } from "vue-router";
+import { Store, useStore } from "vuex";
+function useLogin(userForm: Ref<UserForm>, store: Store<State>) {
+  const login = () => {
+    const user = {
+      userName: userForm.value.userName,
+      password: userForm.value.password
+    };
+    store.dispatch(LOGIN, user);
+  };
+  return {
+    login
+  };
+}
 export default defineComponent({
   setup() {
-    const userLogin = ref(true);
+    const store: Store<State> = useStore();
+    const userForm = ref<UserForm>({ userName: "", password: "" });
+    const userRef = computed(() => store.state.user);
+    const active = ref(true);
+    const { login } = useLogin(userForm, store);
     const changeUserLogin = () => {
-      userLogin.value = !userLogin.value;
+      active.value = !active.value;
     };
     return {
       bg: require("@/assets/img/mage01.jpg"),
-      userLogin,
-      changeUserLogin
+      changeUserLogin,
+      login,
+      userForm,
+      active
     };
   }
 });

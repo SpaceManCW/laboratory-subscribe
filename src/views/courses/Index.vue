@@ -19,8 +19,9 @@ export default defineComponent({
 }
 #sidebar {
   width: 150px;
-  height: 885px;
+  height: 750px;
   border: 1px solid black;
+  border-right-style: none;
 }
 #router {
   width: 100%;

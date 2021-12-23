@@ -1,3 +1,16 @@
+export interface UserForm {
+  userName?: string;
+  password?: string;
+}
+
+export interface User {
+  id?: number;
+  name?: string;
+  sex?: string;
+  tel?: string;
+  password?: string;
+  role?: number;
+}
 export interface Lab {
   id?: number;
   machines?: number;
@@ -8,7 +21,8 @@ export interface Lab {
 export interface Course {
   id?: number;
   name?: string;
-  createTime?: string;
+  classHour?: number;
+  students?: number;
 }
 export interface Teacher {
   id?: number;
@@ -16,41 +30,15 @@ export interface Teacher {
   department?: string;
   major?: string;
   courses?: Course[];
+  records?: [];
 }
 
-export interface User {
+export interface ReRecord {
   id?: number;
-  level?: number;
-  name?: string;
-  address?: string;
-  insertTime?: string;
-  sex?: string;
-  title?: Title;
-  courses?: Course[];
-}
-
-export interface Title {
-  id?: number;
-  name?: string;
-}
-
-export interface GithubUser {
-  name?: string;
-  company?: string;
-  public_repos?: number;
-  followers?: number;
-  repos_url?: string;
-  login?: string;
-  avatar_url?: string;
-  url?: string;
-}
-
-export interface GithubRepos {
-  name?: string;
-  html_url?: string;
-  updated_at?: string;
-  language?: string;
-  size?: number;
-  forks?: number;
-  stargazers_count?: number;
+  lid?: number;
+  tid?: number;
+  courseName?: string;
+  week?: number; //周次
+  day?: number; //星期几
+  lesson?: number; //第几节课
 }
